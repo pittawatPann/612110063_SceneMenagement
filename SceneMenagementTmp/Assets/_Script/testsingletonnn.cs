@@ -7,15 +7,16 @@ using UnityEngine.UI;
 public class testsingletonnn : MonoBehaviour
 {
     public Text gamescore;
+    
     // Start is called before the first frame update
     void Start()
     {
-        //gamescore.GetComponent<Text>().text = SingletonGameManager.Instance.GameScore.ToString();
+        GetComponent<Text>().text = GameApplicationMaganer.Instance.DIFFICULTY_LEVEL_NAMES[GameApplicationMaganer.Instance.DifficultyLevel];
     }
 
     // Update is called once per frame
     void Update()
     {
-        gamescore.text = "Game score : " + SingletonGameManager.Instance.GameScore.ToString();
+        
     }
 }
