@@ -8,5 +8,5 @@ public class SingletonGameManager : Singleton<SingletonGameManager>
 
     public string ClassName { get; } = "SingletonGameManager";
 
-    public int GameScore { get; set; } =99;
+    public int GameScore { get; set; } = 99;
 }
