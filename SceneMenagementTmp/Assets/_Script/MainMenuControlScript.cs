@@ -56,7 +56,7 @@ public class MainMenuControlScript : MonoBehaviour
     }
     public void HowtoplayButtonClock(Button button)
     {
-        SceneManager.LoadScene("SceneHowtoplay");
+        SceneManager.LoadScene("SceneDafuq");
     }
 
 
