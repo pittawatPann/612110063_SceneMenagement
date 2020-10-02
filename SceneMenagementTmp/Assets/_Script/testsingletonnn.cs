@@ -11,7 +11,7 @@ public class testsingletonnn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<Text>().text = GameApplicationMaganer.Instance.DIFFICULTY_LEVEL_NAMES[GameApplicationMaganer.Instance.DifficultyLevel];
+        GetComponent<Text>().text = SingletonGameApplicationManager.Instance.DIFFICULTY_LEVEL_NAMES[SingletonGameApplicationManager.Instance.DifficultyLevel];
     }
 
     // Update is called once per frame

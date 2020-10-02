@@ -44,10 +44,10 @@ public class MainMenuControlScript : MonoBehaviour
 
     public void OptionButtonClick(Button button)
     {
-        if(!GameApplicationMaganer.Instance.IsOptionMenuActive)
+        if(!SingletonGameApplicationManager.Instance.IsOptionMenuActive)
         {
             SceneManager.LoadScene("SceneOption", LoadSceneMode.Additive);
-            GameApplicationMaganer.Instance.IsOptionMenuActive = true;
+            SingletonGameApplicationManager.Instance.IsOptionMenuActive = true;
         }
     }
     public void ScoreButtonClock(Button button)

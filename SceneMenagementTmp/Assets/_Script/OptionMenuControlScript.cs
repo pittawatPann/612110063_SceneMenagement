@@ -17,9 +17,9 @@ public class OptionMenuControlScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _dropdownDifficulty.value = GameApplicationMaganer.Instance.DifficultyLevel;
-        _toggleMusic.isOn = GameApplicationMaganer.Instance.MusicEnabled;
-        _toggleSFX.isOn = GameApplicationMaganer.Instance.SFXEnabled;
+        _dropdownDifficulty.value = SingletonGameApplicationManager.Instance.DifficultyLevel;
+        _toggleMusic.isOn = SingletonGameApplicationManager.Instance.MusicEnabled;
+        _toggleSFX.isOn = SingletonGameApplicationManager.Instance.SFXEnabled;
 
         _dropdownDifficulty.onValueChanged.AddListener(delegate { DropdownDifficultyChanged(_dropdownDifficulty); });
         _toggleMusic.onValueChanged.AddListener(delegate { OnToggleMusic(_toggleMusic); });
@@ -36,21 +36,33 @@ public class OptionMenuControlScript : MonoBehaviour
     public void BackButtonClick(Button button)
     {
         SceneManager.UnloadSceneAsync("SceneOption");
-        GameApplicationMaganer.Instance.IsOptionMenuActive = false;
+        SingletonGameApplicationManager.Instance.IsOptionMenuActive = false;
     }
 
     public void DropdownDifficultyChanged(Dropdown dropdown)
     {
-        GameApplicationMaganer.Instance.DifficultyLevel = dropdown.value;
+        SingletonGameApplicationManager.Instance.DifficultyLevel = dropdown.value;
     }
 
     public void OnToggleMusic(Toggle toggle)
     {
-        GameApplicationMaganer.Instance.MusicEnabled = _toggleMusic.isOn;
+        SingletonGameApplicationManager.Instance.MusicEnabled = _toggleMusic.isOn;
+        if (SingletonGameApplicationManager.Instance.MusicEnabled)
+             SingletonSoundManager.Instance.MusicVolume = SingletonSoundManager.Instance.
+            MusicVolumeDefault;
+         else
+             SingletonSoundManager.Instance.MusicVolume = SingletonSoundManager.
+            MUTE_VOLUME;
     }
 
     public void OnToggleSFX(Toggle toggle)
     {
-        GameApplicationMaganer.Instance.SFXEnabled = _toggleSFX.isOn;
+        SingletonGameApplicationManager.Instance.SFXEnabled = _toggleSFX.isOn;
+        if (SingletonGameApplicationManager.Instance.SFXEnabled)
+             SingletonSoundManager.Instance.MasterSFXVolume = SingletonSoundManager.
+            Instance.MasterSFXVolumeDefault;
+         else
+             SingletonSoundManager.Instance.MasterSFXVolume = SingletonSoundManager.
+            MUTE_VOLUME;
     }
 }
